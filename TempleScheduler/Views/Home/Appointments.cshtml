@@ -17,22 +17,23 @@
             <th>Time</th>
         </tr>
     </thead>
-
     <tbody>
-
         @if (Model?.Count() != 0)
         {
             @foreach (var b in Model)
             {
-                <tr>b.Date</tr>
-                <tr>b.GroupName</tr>
-                <tr>b.GroupSize</tr>
-                <tr>b.Email</tr>
-                <tr>b.Phone</tr>
-
+                <tr>
+                    <td>@b.Date</td>
+                    <td>@b.GroupName</td>
+                    <td>@b.GroupSize</td>
+                    <td>@b.Email</td>
+                    <td>@b.Phone</td>
+                    <td>@b.Time</td>
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@b.AppointmentId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@b.AppointmentId">Delete</a></td>
+                </tr>
             }
         }
     </tbody>
-
 </table>
 
