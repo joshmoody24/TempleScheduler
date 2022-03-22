@@ -1,8 +1,136 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+        <h1>Layton Utah Temple Tours</h1>
+        <h2>Schedule a tour with us to visit the beautiful Layton Temple!</h2>
+        <a asp-controller="Home" asp-action="Signup" class="btn-get-started scrollto">Sign Up Now!</a>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+            <div class="row justify-content-end">
+                <div class="col-lg-11">
+                    <div class="row justify-content-end">
+
+                        <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box py-5">
+                                <i class="fa-solid fa-ruler-combined"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="87000" class="purecounter">0</span>
+                                <p>Square ft</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box py-5">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="3" class="purecounter">0</span>
+                                <p>Stories</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box pb-5 pt-0 pt-lg-5">
+                                <i class="fa-solid fa-tree"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="11" class="purecounter">0</span>
+                                <p>Acres</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box pb-5 pt-0 pt-lg-5">
+                                <i class="fa-solid fa-place-of-worship"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="2" class="purecounter">0</span>
+                                <p>Spires</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6 video-box align-self-baseline position-relative">
+                    <img src="~/img/layton-utah-temple-6932-main.jpg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-6 pt-3 pt-lg-0 content">
+                    <h3>Tour Information.</h3>
+                    <p><strong>Use the "quantity" field to let us know how many people will be in your group. Thank you!</strong></p>
+
+                    <p>
+                        We can only add a limited number of tours at this time. They will be removing the visitors center
+                        soon so that they can complete the landscaping. When the trailer is gone, we anticipate being able
+                        to talk to groups on the lawn of the church across the street or at the Morgan's backyard. We are trying to
+                        facilitate as many groups as possible, so please only sign-up when you can commit to coming on the
+                        selected date and time. We have a lot of last minute cancelations.
+                    </p>
+
+                    <p><strong>We can do groups on Saturday, please text me at 801-628-4488.</strong></p>
+
+                    <h4>General Tour Instructions</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Park on Roseweood (west side of the temple) and meet at the Visitors Center Trailer.</li>
+                        <li><i class="fa-solid fa-check"></i> Dress casual, except on Sunday.</li>
+                        <li><i class="fa-solid fa-check"></i> Spanish-speaking tours are available, by request.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services ">
+        <div class="container">
+
+            <div class="section-title pt-5" data-aos="fade-up">
+                <h2>Available Tours</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="fa-solid fa-cloud-sun" style="color: #ff689b;"></i></div>
+                        <h4 class="title">Outdoor Tour</h4>
+                        <p class="description">
+                            We will walk on the sidewalk along Oak Hills and on Rosewood
+                            in front of the temple on uneven surfaces; please wear sturdy shoes.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="fa-solid fa-caravan" style="color: #e9bf06;"></i></div>
+                        <h4 class="title">Trailer Tour</h4>
+                        <p class="description">On Sunday. Masks are required.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+        <div class="container" data-aos="fade-in">
+
+            <div class="text-center">
+                <h3>Sign Up for a Tour Today!</h3>
+                <p>Please call or text (801) 628-4488 with questions or special requests.</p>
+                <a class="cta-btn" asp-controller="Home" asp-action="Signup">Sign Up Now</a>
+            </div>
+
+        </div>
+    </section><!-- End Cta Section -->
+</main><!-- End #main -->
