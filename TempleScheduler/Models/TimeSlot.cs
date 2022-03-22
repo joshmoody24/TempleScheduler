@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace TempleScheduler.Models
 {
-    // whenever someone schedules an appointment, a TimeSlot record is created
     // only one timeslot per hour
     // only one group per timeslot
     public class TimeSlot
@@ -31,6 +30,7 @@ namespace TempleScheduler.Models
         */
 
         [Required]
+        [ForeignKey("Group")]
         public int GroupId { get; set; }
         public Group Group { get; set; }
 

@@ -1,0 +1,15 @@
+﻿<h1>Available Times</h1>
+<table class="table">
+<!-- temporary for loop for proof of concept. Eventually this will be foreach(TimeSlot t in Model) -->
+    @for (int i = 8; i <= 20; i++)
+    {
+        <tr>
+            <td>
+                @(i <= 12 ? i : i-12):00 @(i <= 12 ? "AM" : "PM")
+            </td>
+            <td>
+                <a class="btn btn-sm btn-primary text-light">Reserve Time</a>
+            </td>
+        </tr>
+    }
+</table>
