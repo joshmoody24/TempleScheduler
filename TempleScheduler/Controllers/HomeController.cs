@@ -11,11 +11,11 @@ namespace TempleScheduler.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private Group appointment { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(Group _group)
         {
-            _logger = logger;
+            appointment = _group;
         }
 
         public IActionResult Index()
@@ -23,15 +23,30 @@ namespace TempleScheduler.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+        [HttpGet]
+        public IActionResult Form()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Form(Group gr)
+        {
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult SignUp()
+        {
+            return View();
         }
     }
 }
