@@ -1,0 +1,43 @@
+﻿@{
+
+    ViewData["Title"] = "Sign UP Form";
+}
+
+@model Group
+
+<h2>Application Form</h2>
+
+<form method="post" asp-action="Form">
+    <div class="form-group">
+        <label asp-for="GroupName">Group Name:</label>
+        <input asp-for="GroupName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GroupSize">Group Size:</label>
+        <input asp-for="GroupSize" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone">Phone(xxx-xxx-xxxx):</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+    <br />
+
+    <input type="hidden" asp-for="Date" class="form-control" />
+    <input type="hidden" asp-for="Date" class="form-control" />
+
+    <button class="btn btn-primary">Submit</button>
+    <div asp-validation-summary="All"></div>
+
+    @if(ViewBag.New == false)
+            {
+                <input type="hidden" asp-for="AppointmentId"/>
+            }
+
+</form>
