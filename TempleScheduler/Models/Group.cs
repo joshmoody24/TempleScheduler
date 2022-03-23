@@ -21,7 +21,6 @@ namespace TempleScheduler.Models
         [Required(ErrorMessage ="Enter the Email Address")]
         public string Email { get; set; }
 
-        // optional
         public string Phone { get; set; }
 
         public string Date { get; set; }
