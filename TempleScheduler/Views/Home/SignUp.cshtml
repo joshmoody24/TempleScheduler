@@ -1,14 +1,24 @@
-﻿<h1>Available Times</h1>
+﻿@model List<TimeSlot>
+
+
+<h1>Available Times</h1>
 <table class="table">
 <!-- temporary for loop for proof of concept. Eventually this will be foreach(TimeSlot t in Model) -->
-    @for (int i = 8; i <= 20; i++)
+    @foreach(TimeSlot t in Model)
     {
         <tr>
             <td>
-                @(i <= 12 ? i : i-12):00 @(i <= 12 ? "AM" : "PM")
+                @(t.Time <= 12 ? t.Time : t.Time-12):00 @(t.Time <= 12 ? "AM" : "PM")
             </td>
             <td>
-                <a class="btn btn-sm btn-primary text-light">Reserve Time</a>
+                @if (t.Group == null)
+                {
+                    <a asp-controller="Home" asp-action="Form" asp-route-timeslotid="@t.TimeSlotId" class="btn btn-sm btn-primary text-light">Reserve Time</a>
+                }
+                @if (t.Group != null) 
+                {
+                    <button class="btn btn-sm btn-secondary text-light" disabled>Already Taken</button>
+                }
             </td>
         </tr>
     }

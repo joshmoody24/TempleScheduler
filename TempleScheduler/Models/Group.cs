@@ -10,7 +10,7 @@ namespace TempleScheduler.Models
     {
         [Required]
         [Key]
-        public int AppointmentId { get; set; }
+        public int GroupId { get; set; }
 
         [Required(ErrorMessage = "Enter the Group Name")]
         public string GroupName { get; set; }
@@ -22,9 +22,5 @@ namespace TempleScheduler.Models
         public string Email { get; set; }
 
         public string Phone { get; set; }
-
-        public string Date { get; set; }
-
-        public string Time { get; set; }
     }
 }

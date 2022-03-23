@@ -2,7 +2,7 @@
     ViewData["Title"] = "View Appointments";
 }
 
-@model List<Group>
+@model List<TimeSlot>
 
 <h1>View Appointment</h1>
 
@@ -20,17 +20,17 @@
     <tbody>
         @if (Model?.Count() != 0)
         {
-            @foreach (var b in Model)
+            @foreach (TimeSlot b in Model)
             {
                 <tr>
                     <td>@b.Date</td>
-                    <td>@b.GroupName</td>
-                    <td>@b.GroupSize</td>
-                    <td>@b.Email</td>
-                    <td>@b.Phone</td>
+                    <td>@b.Group.GroupName</td>
+                    <td>@b.Group.GroupSize</td>
+                    <td>@b.Group.Email</td>
+                    <td>@b.Group.Phone</td>
                     <td>@b.Time</td>
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentid="@b.AppointmentId">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentid="@b.AppointmentId">Delete</a></td>
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@b.GroupId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-groupid="@b.GroupId">Delete</a></td>
                 </tr>
             }
         }

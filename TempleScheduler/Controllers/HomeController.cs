@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,11 @@ namespace TempleScheduler.Controllers
 {
     public class HomeController : Controller
     {
-        private Group appointment { get; set; }
-        private AppointmentContext _xContext { get; set; }
+        private AppointmentContext context { get; set; }
 
-        public HomeController(Group _group, AppointmentContext x)
+        public HomeController(AppointmentContext x)
         {
-            appointment = _group;
-            _xContext = x;
+            context = x;
         }
 
         public IActionResult Index()
@@ -27,14 +26,26 @@ namespace TempleScheduler.Controllers
 
 
         [HttpGet]
-        public IActionResult Form()
+        public IActionResult Form(int timeslotid)
         {
-            return View();
+            TimeSlot t = context.TimeSlots.Include(t => t.Group).FirstOrDefault(x => x.TimeSlotId == timeslotid);
+            if(t.Group == null)
+            {
+                t.Group = new Group();
+            }
+            return View(t);
         }
 
         [HttpPost]
-        public IActionResult Form(Group gr)
+        public IActionResult Form(TimeSlot t)
         {
+            if (ModelState.IsValid)
+            {
+                //context.Groups.Add(t.Group);
+                context.TimeSlots.Update(t);
+                context.SaveChanges();
+                return RedirectToAction("Appointments");
+            }
             return View();
         }
 
@@ -43,17 +54,21 @@ namespace TempleScheduler.Controllers
         [HttpGet]
         public IActionResult Appointments()
         {
-            var appointments = _xContext.Groups
+            // get all time slots that have been reserved (have a group attached to them)
+            List<TimeSlot> appointments = context.TimeSlots
+                .Include(x => x.Group)
+                .Where(x => x.GroupId != null)
                 .ToList();
 
             return View(appointments);
         }
 
         [HttpGet]
-        public IActionResult Edit(int appointmentid)
+        public IActionResult Edit(int groupid)
         {
-            var appointment = _xContext.Groups
-                .Single(x => x.AppointmentId == appointmentid);
+            var appointment = context.TimeSlots
+                .Include(x => x.Group)
+                .Single(x => x.Group.GroupId == groupid);
 
             return View("Form", appointment);
         }
@@ -61,26 +76,34 @@ namespace TempleScheduler.Controllers
         [HttpPost]
         public IActionResult Edit(Group gr)
         {
-            _xContext.Update(gr);
-            _xContext.SaveChanges();
+            context.Update(gr);
+            context.SaveChanges();
 
             return RedirectToAction("Appointments");
         }
 
         [HttpGet]
-        public IActionResult Delete(int appointmentid)
+        public IActionResult Delete(int groupid)
         {
-            var appointment = _xContext.Groups
-                .Single(x => x.AppointmentId == appointmentid);
+            var group = context.Groups
+                .FirstOrDefault(x => x.GroupId == groupid);
 
-            return View(appointment);
+            if (group != null)
+            {
+                return View(group);
+            }
+            else return RedirectToAction("Appointments");
         }
 
         [HttpPost]
         public IActionResult Delete(Group gr)
         {
-            _xContext.Groups.Remove(gr);
-            _xContext.SaveChanges();
+            // first, remove the foreign key pointing to the group
+            var timeSlot = context.TimeSlots.Single(x => x.Group.GroupId == gr.GroupId);
+            timeSlot.Group = null;
+            context.TimeSlots.Update(timeSlot);
+            context.Groups.Remove(gr);
+            context.SaveChanges();
 
             return RedirectToAction("Appointments");
         }
@@ -95,7 +118,8 @@ namespace TempleScheduler.Controllers
 
         public IActionResult SignUp()
         {
-            return View();
+            List<TimeSlot> timeSlots = context.TimeSlots.Include(x => x.Group).ToList<TimeSlot>();
+            return View(timeSlots);
         }
     }
 }

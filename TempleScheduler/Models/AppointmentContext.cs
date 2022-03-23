@@ -18,33 +18,27 @@ namespace TempleScheduler.Models
             mb.Entity<Group>().HasData(
                 new Group
                 {
-                    AppointmentId = 1,
+                    GroupId = 1,
                     GroupName = "4-1",
                     GroupSize = "4",
                     Email = "group4-1@gmail.com",
                     Phone = "123-456-7890",
-                    Time = "12",
-                    Date = "1/1/2022"
                 },
                 new Group
                 {
-                    AppointmentId = 2,
+                    GroupId = 2,
                     GroupName = "4-2",
                     GroupSize = "5",
                     Email = "group4-2@gmail.com",
                     Phone = "111-222-3333",
-                    Time = "15",
-                    Date = "1/2/2022"
                 },
                 new Group
                 {
-                    AppointmentId = 3,
+                    GroupId = 3,
                     GroupName = "4-3",
                     GroupSize = "6",
                     Email = "group4-3@gmail.com",
                     Phone = "555-555-5555",
-                    Time = "11",
-                    Date = "1/3/2022"
                 }
             );
 
@@ -52,25 +46,33 @@ namespace TempleScheduler.Models
                 new TimeSlot
                 {
                     TimeSlotId = 1,
-                    GroupId = 1,
-                    Date = "1/1/2022",
-                    Time = "12"
+                    GroupId = null,
+                    Date = "2022-01-01",
+                    Time = 12
 
                 },
                 new TimeSlot
                 {
                     TimeSlotId = 2,
                     GroupId = 2,
-                    Date = "1/2/2022",
-                    Time = "15"
+                    Date = "2022-01-02",
+                    Time = 15
 
                 },
                 new TimeSlot
                 {
                     TimeSlotId = 3,
-                    GroupId = 3,
-                    Date = "1/3/2022",
-                    Time = "11"
+                    GroupId = null,
+                    Date = "2022-01-03",
+                    Time = 11
+
+                },
+                new TimeSlot
+                {
+                    TimeSlotId = 4,
+                    GroupId = null,
+                    Date = "2022-01-03",
+                    Time = 13
 
                 });
         }

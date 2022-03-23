@@ -15,11 +15,13 @@ namespace TempleScheduler.Models
         [Key]
         public int TimeSlotId { get; set; }
 
-        public Group Group { get; set; }
-        public int GroupId { get; set; }
+        //null Group = available time slot
+        public Group? Group { get; set; }
+        public int? GroupId { get; set; }
 
+        //yyyy-mm-dd
         public string Date { get; set; }
-        public string Time { get; set; }
+        public int Time { get; set; }
 
     }
 }
