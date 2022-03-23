@@ -10,7 +10,7 @@ namespace TempleScheduler.Models
 
         }
         public DbSet<Group> Groups { get; set; }
-
+        public DbSet<TimeSlot> TimeSlots { get; set; }
 
         //seeding data
         protected override void OnModelCreating(ModelBuilder mb)
@@ -47,6 +47,32 @@ namespace TempleScheduler.Models
                     Date = "1/3/2022"
                 }
             );
+
+            mb.Entity<TimeSlot>().HasData(
+                new TimeSlot
+                {
+                    TimeSlotId = 1,
+                    AppointmentId = 1,
+                    Date = "1/1/2022",
+                    Hour = "12"
+                    
+                },
+                new TimeSlot
+                {
+                    TimeSlotId = 2,
+                    AppointmentId = 2,
+                    Date = "1/2/2022",
+                    Hour = "15"
+
+                },
+                new TimeSlot
+                {
+                    TimeSlotId = 3,
+                    AppointmentId = 3,
+                    Date = "1/3/2022",
+                    Hour = "11"
+
+                });
         }
     }
 
