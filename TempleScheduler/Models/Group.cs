@@ -15,6 +15,7 @@ namespace TempleScheduler.Models
         [Required(ErrorMessage = "Enter the Group Name")]
         public string GroupName { get; set; }
 
+        [Required]
         [Range(1,15, ErrorMessage = "Group size should be in 1 -15")]
         public string GroupSize { get; set; }
 
