@@ -52,25 +52,25 @@ namespace TempleScheduler.Models
                 new TimeSlot
                 {
                     TimeSlotId = 1,
-                    AppointmentId = 1,
+                    GroupId = 1,
                     Date = "1/1/2022",
-                    Hour = "12"
-                    
+                    Time = "12"
+
                 },
                 new TimeSlot
                 {
                     TimeSlotId = 2,
-                    AppointmentId = 2,
+                    GroupId = 2,
                     Date = "1/2/2022",
-                    Hour = "15"
+                    Time = "15"
 
                 },
                 new TimeSlot
                 {
                     TimeSlotId = 3,
-                    AppointmentId = 3,
+                    GroupId = 3,
                     Date = "1/3/2022",
-                    Hour = "11"
+                    Time = "11"
 
                 });
         }

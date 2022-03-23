@@ -15,22 +15,11 @@ namespace TempleScheduler.Models
         [Key]
         public int TimeSlotId { get; set; }
 
-        public int AppointmentId { get; set; }
         public Group Group { get; set; }
+        public int GroupId { get; set; }
 
-        [Required(ErrorMessage ="The Date Format is mm/dd/yyyy")]
-        // yyyy-mm-dd
-        public string Date;
-
-        // hour represents hour of the day, 8 = 8AM, 12 = 12PM, 20 = 8PM etc.
-        [Range(8,20, ErrorMessage ="The available time is from 8-20")]
-        public string Hour;
-       
-
-        //[Required]
-        //[ForeignKey("Group")]
-        //public int AppointmentID { get; set; }
-        //public Group Group { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
 
     }
 }
