@@ -118,8 +118,50 @@ namespace TempleScheduler.Controllers
 
         public IActionResult SignUp()
         {
-            List<TimeSlot> timeSlots = context.TimeSlots.Include(x => x.Group).ToList<TimeSlot>();
+            GenerateTimeSlots();
+            List<TimeSlot> timeSlots = context.TimeSlots
+                .Include(x => x.Group)
+                .OrderBy(x => x.Date)
+                .ThenBy(x => x.Time)
+                .ToList<TimeSlot>();
             return View(timeSlots);
+        }
+
+        public void GenerateTimeSlots()
+        {
+            // fetch all timeslots from the database for faster searching
+            List<TimeSlot> existingTimeSlots = context.TimeSlots.ToList<TimeSlot>();
+
+            // automatically generate timeslots up to 90 days in advance whenever someone visits this page
+            DateTime currentTime = DateTime.Now;
+            const int NUM_DAYS_GENERATED_IN_ADVANCE = 90;
+            for (int i = 0; i < NUM_DAYS_GENERATED_IN_ADVANCE; i++)
+            {
+                // skip days that are mondays or sundays (temples are closed those days)
+                if (currentTime.DayOfWeek != DayOfWeek.Sunday && currentTime.DayOfWeek != DayOfWeek.Monday)
+                {
+                    // generate time slots from hour 8 to 20
+                    for (int hour = 8; hour <= 20; hour++)
+                    {
+                        // check if a timeslot for this time already exists
+                        DateTime date = currentTime.Date;
+                        Console.WriteLine(date);
+                        TimeSlot timeslot = existingTimeSlots.FirstOrDefault(t => t.Date.Equals(date) && t.Time == hour);
+                        if (timeslot == null)
+                        {
+                            timeslot = new TimeSlot
+                            {
+                                GroupId = null,
+                                Date = date,
+                                Time = hour
+                            };
+                            context.TimeSlots.Add(timeslot);
+                        }
+                    }
+                }
+                currentTime += TimeSpan.FromDays(1);
+            }
+            context.SaveChanges();
         }
     }
 }
