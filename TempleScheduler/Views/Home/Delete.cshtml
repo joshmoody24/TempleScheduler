@@ -3,12 +3,20 @@
 }
 
 @model Group
-
-<h2>Please Confirm Deletion</h2>
-<h3>Are you sure you want to delete your appointment?</h3>
-
-<form method="post" asp-action="Delete">
-    <button type="submit">Delete</button>
-    <a asp-controller="Home" asp-action="Appointments" class="btn btn-primary">Cancel</a>
-    <input type="hidden" asp-for="GroupId" />
-</form>
+    
+<br /><br /><br /><br />
+<!-- ======= Delete Section ======= -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="row application-form-section">
+            <br /><br />
+            <h2 class="text-danger"><b>Please Confirm Deletion</b></h2>
+            <h6>Are you sure you want to delete your appointment?</h6>
+            <form method="post" asp-action="Delete">
+                <button class="btn btn-danger" type="submit">Delete</button>
+                <a asp-controller="Home" asp-action="Appointments" class="btn btn-primary">Cancel</a>
+                <input type="hidden" asp-for="GroupId" />
+            </form>
+        </div>
+    </div>
+</section><!-- End Delete Section -->
