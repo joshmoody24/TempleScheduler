@@ -8,7 +8,7 @@
     {
         <tr>
             <td>
-                @(t.Time <= 12 ? t.Time : t.Time-12):00 @(t.Time <= 12 ? "AM" : "PM")
+                @t.Date.ToString("D") at @(t.Time <= 12 ? t.Time : t.Time-12):00 @(t.Time <= 12 ? "AM" : "PM")
             </td>
             <td>
                 @if (t.Group == null)

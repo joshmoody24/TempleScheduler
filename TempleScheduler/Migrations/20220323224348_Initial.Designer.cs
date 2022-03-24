@@ -9,7 +9,7 @@ using TempleScheduler.Models;
 namespace TempleScheduler.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20220323021501_Initial")]
+    [Migration("20220323224348_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,7 @@ namespace TempleScheduler.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GroupSize")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -75,7 +76,7 @@ namespace TempleScheduler.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("GroupId")
@@ -89,33 +90,6 @@ namespace TempleScheduler.Migrations
                     b.HasIndex("GroupId");
 
                     b.ToTable("TimeSlots");
-
-                    b.HasData(
-                        new
-                        {
-                            TimeSlotId = 1,
-                            Date = "2022-01-01",
-                            Time = 12
-                        },
-                        new
-                        {
-                            TimeSlotId = 2,
-                            Date = "2022-01-02",
-                            GroupId = 2,
-                            Time = 15
-                        },
-                        new
-                        {
-                            TimeSlotId = 3,
-                            Date = "2022-01-03",
-                            Time = 11
-                        },
-                        new
-                        {
-                            TimeSlotId = 4,
-                            Date = "2022-01-03",
-                            Time = 13
-                        });
                 });
 
             modelBuilder.Entity("TempleScheduler.Models.TimeSlot", b =>

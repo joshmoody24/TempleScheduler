@@ -45,9 +45,6 @@
     <button class="btn btn-primary">Submit</button>
     <div asp-validation-summary="All"></div>
 
-    @if (ViewBag.New == false)
-    {
-        <input type="hidden" asp-for="Group.GroupId" />
-    }
+    <input type="hidden" asp-for="TimeSlotId" />
 
 </form>

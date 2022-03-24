@@ -41,7 +41,7 @@ namespace TempleScheduler.Models
                     Phone = "555-555-5555",
                 }
             );
-
+            /* old code for seeding database
             mb.Entity<TimeSlot>().HasData(
                 new TimeSlot
                 {
@@ -75,6 +75,7 @@ namespace TempleScheduler.Models
                     Time = 13
 
                 });
+            */
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TempleScheduler.Migrations
 {
@@ -13,7 +14,7 @@ namespace TempleScheduler.Migrations
                     GroupId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     GroupName = table.Column<string>(nullable: false),
-                    GroupSize = table.Column<string>(nullable: true),
+                    GroupSize = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Phone = table.Column<string>(nullable: true)
                 },
@@ -29,7 +30,7 @@ namespace TempleScheduler.Migrations
                     TimeSlotId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     GroupId = table.Column<int>(nullable: true),
-                    Date = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
                     Time = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -57,26 +58,6 @@ namespace TempleScheduler.Migrations
                 table: "Groups",
                 columns: new[] { "GroupId", "Email", "GroupName", "GroupSize", "Phone" },
                 values: new object[] { 3, "group4-3@gmail.com", "4-3", "6", "555-555-5555" });
-
-            migrationBuilder.InsertData(
-                table: "TimeSlots",
-                columns: new[] { "TimeSlotId", "Date", "GroupId", "Time" },
-                values: new object[] { 1, "2022-01-01", null, 12 });
-
-            migrationBuilder.InsertData(
-                table: "TimeSlots",
-                columns: new[] { "TimeSlotId", "Date", "GroupId", "Time" },
-                values: new object[] { 3, "2022-01-03", null, 11 });
-
-            migrationBuilder.InsertData(
-                table: "TimeSlots",
-                columns: new[] { "TimeSlotId", "Date", "GroupId", "Time" },
-                values: new object[] { 4, "2022-01-03", null, 13 });
-
-            migrationBuilder.InsertData(
-                table: "TimeSlots",
-                columns: new[] { "TimeSlotId", "Date", "GroupId", "Time" },
-                values: new object[] { 2, "2022-01-02", 2, 15 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_TimeSlots_GroupId",

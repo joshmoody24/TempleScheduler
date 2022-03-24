@@ -20,7 +20,7 @@ namespace TempleScheduler.Models
         public int? GroupId { get; set; }
 
         //yyyy-mm-dd
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public int Time { get; set; }
 
     }
