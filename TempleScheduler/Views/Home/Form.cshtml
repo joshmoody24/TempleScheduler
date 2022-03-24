@@ -5,49 +5,69 @@
 
 @model TimeSlot
 
-<h2>Application Form</h2>
-
-<form method="post" asp-action="Form">
-
-    <div class="form-group">
-        <label asp-for="Date">Date:</label>
-        <input asp-for="Date" class="form-control" readonly />
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+        <h1>Tour Sign Up</h1>
+        <h2>Fill out the form below with the requested information</h2>
     </div>
+</section><!-- End Hero -->
 
-    <div class="form-group mb-2">
-        <label asp-for="Time">Time:</label>
-        <input asp-for="Time" class="form-control" readonly />
-    </div>
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row application-form-section">
+                <br /><br />
+                <h2>Application Form</h2>
+                <form method="post" asp-action="Form">
+
+                    <div class="form-group">
+                        <label asp-for="Date">Date:</label>
+                        <input asp-for="Date" class="form-control" readonly />
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label asp-for="Time">Time:</label>
+                        <input asp-for="Time" class="form-control" readonly />
+                    </div>
 
 
-    <div class="form-group">
-        <label asp-for="Group.GroupName">Group Name:</label>
-        <input asp-for="Group.GroupName" class="form-control" />
-    </div>
+                    <div class="form-group">
+                        <label asp-for="Group.GroupName">Group Name:</label>
+                        <input asp-for="Group.GroupName" class="form-control" />
+                    </div>
 
-    <div class="form-group">
-        <label asp-for="Group.GroupSize">Group Size:</label>
-        <input type="number" asp-for="Group.GroupSize" class="form-control" />
-    </div>
+                    <div class="form-group">
+                        <label asp-for="Group.GroupSize">Group Size:</label>
+                        <input type="number" asp-for="Group.GroupSize" class="form-control" />
+                    </div>
 
-    <div class="form-group">
-        <label asp-for="Group.Email">Email:</label>
-        <input asp-for="Group.Email" class="form-control" />
-    </div>
+                    <div class="form-group">
+                        <label asp-for="Group.Email">Email:</label>
+                        <input asp-for="Group.Email" class="form-control" />
+                    </div>
 
-    <div class="form-group">
-        <label asp-for="Group.Phone">Phone(xxx-xxx-xxxx):</label>
-        <input asp-for="Group.Phone" class="form-control" />
-    </div>
+                    <div class="form-group">
+                        <label asp-for="Group.Phone">Phone(xxx-xxx-xxxx):</label>
+                        <input asp-for="Group.Phone" class="form-control" />
+                    </div>
 
-    <br />
+                    <br />
 
-    <button class="btn btn-primary">Submit</button>
-    <div asp-validation-summary="All"></div>
+                    <button class="btn btn-primary">Submit</button>
+                    <div asp-validation-summary="All"></div>
 
-    @if (ViewBag.New == false)
-    {
-        <input type="hidden" asp-for="Group.GroupId" />
-    }
+                    @if (ViewBag.New == false)
+                    {
+                        <input type="hidden" asp-for="Group.GroupId" />
+                    }
 
-</form>
+                </form>
+
+
+            </div>
+        </div>
+    </section><!-- End About Section -->
+</main>
