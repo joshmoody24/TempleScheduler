@@ -4,36 +4,56 @@
 
 @model List<TimeSlot>
 
-<h1>View Appointment</h1>
 
-<table class="table table-sm table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Name of Group</th>
-            <th>Size of Group</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Time</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model?.Count() != 0)
-        {
-            @foreach (TimeSlot b in Model)
-            {
-                <tr>
-                    <td>@b.Date</td>
-                    <td>@b.Group.GroupName</td>
-                    <td>@b.Group.GroupSize</td>
-                    <td>@b.Group.Email</td>
-                    <td>@b.Group.Phone</td>
-                    <td>@b.Time</td>
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@b.GroupId">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete" asp-route-groupid="@b.GroupId">Delete</a></td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+        <h1>View Appointments</h1>
+        <h2>Make Edits to the scheduled appointments below</h2>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row application-form-section">
+                <br /><br />
+                <h2>Scheduled Appointments</h2>
+                <table class="table table-sm table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name of Group</th>
+                            <th>Size of Group</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model?.Count() != 0)
+                        {
+                            @foreach (TimeSlot b in Model)
+                            {
+                                <tr>
+                                    <td>@b.Date</td>
+                                    <td>@b.Group.GroupName</td>
+                                    <td>@b.Group.GroupSize</td>
+                                    <td>@b.Group.Email</td>
+                                    <td>@b.Group.Phone</td>
+                                    <td>@b.Time</td>
+                                    <td><a asp-controller="Home" asp-action="Edit" asp-route-groupid="@b.GroupId">Edit</a></td>
+                                    <td><a class="text-danger" asp-controller="Home" asp-action="Delete" asp-route-groupid="@b.GroupId">Delete</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section><!-- End About Section -->
+</main>
 
