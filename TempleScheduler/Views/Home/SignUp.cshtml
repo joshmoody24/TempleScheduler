@@ -4,7 +4,6 @@
 
 @model List<TimeSlot>
 
-<<<<<<< HEAD
 <h1>Available Times</h1>
 <table class="table">
 <!-- temporary for loop for proof of concept. Eventually this will be foreach(TimeSlot t in Model) -->
@@ -27,46 +26,3 @@
         </tr>
     }
 </table>
-=======
-<!-- ======= Hero Section ======= -->
-<section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-        <h1>Schedule Your Tour</h1>
-        <h2>Select a time slot below for your tour</h2>
-    </div>
-</section><!-- End Hero -->
-
-<main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="row application-form-section">
-                <br /><br />
-                <h2>Available Times</h2>
-                <table class="table">
-                    <!-- temporary for loop for proof of concept. Eventually this will be foreach(TimeSlot t in Model) -->
-                    @foreach (TimeSlot t in Model)
-                    {
-                        <tr>
-                            <td>
-                                @(t.Time <= 12 ? t.Time : t.Time-12):00 @(t.Time <= 12 ? "AM" : "PM")
-                            </td>
-                            <td>
-                                @if (t.Group == null)
-                                {
-                                    <a asp-controller="Home" asp-action="Form" asp-route-timeslotid="@t.TimeSlotId" class="btn btn-sm btn-primary text-light">Reserve Time</a>
-                                }
-                                @if (t.Group != null)
-                                {
-                                    <button class="btn btn-sm btn-secondary text-light" disabled>Already Taken</button>
-                                }
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </div>
-        </div>
-    </section><!-- End About Section -->
-</main>
->>>>>>> master
